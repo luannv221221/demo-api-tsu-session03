@@ -20,4 +20,30 @@ public class AuthorRepository {
     public List<Author> findAll() {
         return this.authors;
     }
+    public Author create(Author author) {
+        this.authors.add(author);
+        return author;
+    }
+    public Author findById(int id) {
+        for (Author author : this.authors) {
+            if (author.getId() == id) {
+                return author;
+            }
+        }
+        return null;
+    }
+    public Author update(Author author, int id) {
+        for (Author author1 : this.authors) {
+            if (author1.getId() == id) {
+                author1.setName(author.getName());
+                author1.setEmail(author.getEmail());
+                return author1;
+            }
+        }
+        return null;
+    }
+
+    public void delete(int id) {
+        authors.removeIf(author -> author.getId() == id);
+    }
 }
